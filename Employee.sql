@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS Department (
+	Department_id SERIAL PRIMARY KEY,
+	Name VARCHAR NOT NULL 
+);
+
+CREATE TABLE IF NOT EXISTS Employee (
+	Employee_id SERIAL PRIMARY KEY,
+	Name VARCHAR NOT NULL,
+	Department_id INTEGER NOT NULL REFERENCES Department(Department_id),
+	Boss_id INTEGER NOT NULL 
+);
+
+CREATE TABLE IF NOT EXISTS Boss (
+	Boss_id SERIAL PRIMARY KEY REFERENCES Employee(Employee_id),
+	Name VARCHAR NOT NULL
+);
